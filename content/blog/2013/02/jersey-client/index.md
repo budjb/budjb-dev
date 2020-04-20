@@ -4,6 +4,7 @@ date: '2013-02-08T09:22-0500'
 readtime: 10 min
 author: Bud Byrd
 coverPhoto: ./cover.jpg
+coverAttribution: Photo by 贝莉儿 DANIST on Unsplash
 ---
 
 I recently looked into an issue my friend was having with an HTTP call and its failure to correctly convert JSON. The conversion problem is partly due to the resource that he was hitting returning a newline before the actual JSON text. I found he was using HTTPBuilder, which provides a builder-style syntax to create requests. The syntax was easy to use, but the library itself is old and relies on old libraries.

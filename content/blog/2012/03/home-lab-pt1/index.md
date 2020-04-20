@@ -3,7 +3,8 @@ title: 'vSphere 5 Home Lab Part 1: Introduction and Hardware'
 date: '2012-03-26T17:12-0500'
 readtime: 5 min
 author: Bud Byrd
-coverPhoto: ./cover.jpg
+coverPhoto: ./jordan-harrison-40XgDxBfYXM-unsplash.jpg
+coverAttribution: Photo by Jordan Harrison on Unsplash
 ---
 
 I've recently had aspirations to study and take the VCP 5 exam, and while reading material and doing sample tests is helpful, there's nothing like having your own lab environment to play around and tinker with.  I didn't want to dump a whole lot of money into a powerful server with network storage, however.

@@ -1,0 +1,35 @@
+.blog-list {
+  .item {
+    margin-bottom: 3rem;
+
+    .cover-photo {
+      max-height: 250px;
+    }
+
+    .meta {
+      span {
+        font-size: .75rem;
+        color: $gray-600;
+        text-transform: uppercase;
+
+        &:not(:last-of-type):after {
+          content: "";
+          display: inline-block;
+          width: 3px;
+          height: 3px;
+          border-radius: 50%;
+          background: #8f8f8f;
+          margin-left: 0.5rem;
+          margin-right: 0.5rem;
+          position: relative;
+          top: -3px;
+        }
+      }
+    }
+  }
+
+  .pagination {
+    font-size: .875em;
+    text-transform: uppercase;
+  }
+}

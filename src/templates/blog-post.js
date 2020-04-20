@@ -4,6 +4,30 @@ import Image from 'gatsby-image';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { Disqus } from 'gatsby-plugin-disqus';
+import { Figure } from 'react-bootstrap';
+
+const CoverPhoto = ({post}) => {
+  if (!post.frontmatter.coverPhoto) {
+    return '';
+  }
+
+  let attribution = '';
+
+  if (post.frontmatter.coverAttribution) {
+    attribution = (
+      <Figure.Caption className="px-3" style={{fontSize: '.75rem'}}>
+        {post.frontmatter.coverAttribution}
+      </Figure.Caption>
+    );
+  }
+
+  return (
+    <Figure className="d-block bg-white mb-0">
+      <Image fluid={post.frontmatter.coverPhoto.childImageSharp.fluid} alt=""/>
+      {attribution}
+    </Figure>
+  )
+};
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
@@ -19,9 +43,9 @@ const BlogPostTemplate = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
-      <article className="blog-post px-3 py-5 p-md-5">
-        <div className="container">
-          { post.frontmatter.coverPhoto && <Image fluid={post.frontmatter.coverPhoto.childImageSharp.fluid} className="mb-5" alt=""/>}
+      <div className="limited-content-width py-5 px-0 px-md-4">
+        <CoverPhoto post={post}/>
+        <article className="blog-post px-3 py-3">
           <header className="blog-post-header">
             <h1 className="mb-2">{post.frontmatter.title}</h1>
             <div className="meta mb-3">
@@ -33,8 +57,8 @@ const BlogPostTemplate = ({ data, location }) => {
           <div className="blog-post-body" dangerouslySetInnerHTML={{ __html: post.html }} />
           <hr className="my-5"/>
           <Disqus config={disqusConfig} />
-        </div>
-      </article>
+        </article>
+      </div>
     </Layout>
   );
 };
@@ -60,11 +84,12 @@ export const pageQuery = graphql`
         author
         coverPhoto {
           childImageSharp {
-            fluid {
+            fluid(maxWidth: 820) {
               ...GatsbyImageSharpFluid
             }
           }
         }
+        coverAttribution
       }
     }
   }

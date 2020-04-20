@@ -1,31 +1,26 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import Image from 'gatsby-image';
+import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuoteLeft, faArrowLeft, faArrowRight, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-
-const presets = {
-  lightbulb: faLightbulb
-};
 
 const BlogImage = ({ post }) => {
   const image = post.frontmatter.coverPhoto;
 
   if (image) {
-    return <Image fluid={image.childImageSharp.fluid} className="mr-3 img-fluid post-thumb d-none d-md-flex" alt=""/>;
+    const as = () => <Image fluid={image.childImageSharp.fluid} className="card-img-top cover-photo" alt=""/>;
+    return (
+      <Link to={post.fields.slug}>
+        <Card.Img as={as}/>
+      </Link>
+    );
   }
 
-  const preset = post.frontmatter.coverIconPreset;
-  const icon = preset in presets ? presets[preset] : faQuoteLeft;
-
-  return (
-    <div className="mr-3 d-none d-md-flex post-thumb justify-content-center align-items-center theme-bg-dark text-white" style={{fontSize: "3rem"}}>
-      <FontAwesomeIcon icon={icon}/>
-    </div>
-  );
+  return "";
 };
 
 const BlogSection = ({ post }) => {
@@ -33,25 +28,21 @@ const BlogSection = ({ post }) => {
   const innerHtml = post.frontmatter.description || post.excerpt;
   
   return (
-    <div class="item mb-5" key={post.fields.slug}>
-      <div class="media">
-        <Link to={post.fields.slug}><BlogImage post={post}/></Link>
-        <div class="media-body">
-          <h1 class="h2 title mb-1">
-            <Link to={post.fields.slug}>{title}</Link>
-          </h1>
-          <div class="meta mb-1">
-            <span className="meta-item">Published {post.frontmatter.date}</span>
-            <span className="meta-item">{post.frontmatter.author}</span>
-            <span className="meta-item">{post.frontmatter.readtime} read</span>
-          </div>
-          <div class="intro" dangerouslySetInnerHTML={{ __html: innerHtml }} />
-          <Link className="more-link" to={post.fields.slug}>
-            Read more &rarr;
-          </Link>
+    <Card className="item">
+      <BlogImage post={post}/>
+      <Card.Body>
+        <Card.Title as="h2"><Link to={post.fields.slug}>{title}</Link></Card.Title>
+        <Card.Text dangerouslySetInnerHTML={{__html: innerHtml}}/>
+        <Link className="mb-3 d-inline-block" to={post.fields.slug}>
+          Read more &rarr;
+        </Link>
+        <div class="meta mb-1">
+          <span className="meta-item">Published {post.frontmatter.date}</span>
+          <span className="meta-item">{post.frontmatter.author}</span>
+          <span className="meta-item">{post.frontmatter.readtime} read</span>
         </div>
-      </div>
-    </div>
+      </Card.Body>
+    </Card>
   );
 };
 
@@ -69,29 +60,28 @@ const BlogIndex = ({ data, location, pageContext }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Home"/>
-      <section class="blog-list px-3 py-5 p-md-5 position-relative">
-        <div class="container">
-          {posts.map(({ node }) => (
-            <BlogSection post={node}/>
-          ))}
-          <div class="d-flex flex-row justify-content-between">
-            <div className="text-left" style={{flex: '1 1 0'}}>
-              {!isFirst && (
-                <Link to={prevPage} rel="prev">
-                  <FontAwesomeIcon icon={faArrowLeft}/> Previous Page
-                </Link>
-              )}
-            </div>
-            <div className="text-center" style={{flex: '1 1 0'}}>
-              Page {currentPage} of {numPages}
-            </div>
-            <div className="text-right" style={{flex: '1 1 0'}}>
-              {!isLast && (
-                <Link to={nextPage} rel="next">
-                  Next Page <FontAwesomeIcon icon={faArrowRight}/>
-                </Link>
-              )}
-            </div>
+      <section class=" blog-list limited-content-width py-3 px-1 py-lg-5 px-lg-3">
+        {posts.map(({ node }) => (
+          <BlogSection post={node}/>
+        ))}
+
+        <div class="pagination d-flex flex-row justify-content-between">
+          <div className="text-left" style={{flex: '1 1 0'}}>
+            {!isFirst && (
+              <Link to={prevPage} rel="prev">
+                <FontAwesomeIcon icon={faArrowLeft}/> Previous
+              </Link>
+            )}
+          </div>
+          <div className="text-center" style={{flex: '1 1 0'}}>
+            Page {currentPage} of {numPages}
+          </div>
+          <div className="text-right" style={{flex: '1 1 0'}}>
+            {!isLast && (
+              <Link to={nextPage} rel="next">
+                Next <FontAwesomeIcon icon={faArrowRight}/>
+              </Link>
+            )}
           </div>
         </div>
       </section>
@@ -129,12 +119,11 @@ export const pageQuery = graphql`
             description
             coverPhoto {
               childImageSharp {
-                fluid(maxWidth: 110, maxHeight: 110) {
+                fluid(maxWidth: 820, maxHeight: 300) {
                   ...GatsbyImageSharpFluid
                 }
               }
             }
-            coverIconPreset
           }
         }
       }

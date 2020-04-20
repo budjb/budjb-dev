@@ -1,7 +1,7 @@
 ---
 title: 'JAX-RS and HashMaps'
 date: '2012-02-24T15:40-0500'
-readtime: 5min
+readtime: 5 min
 topic: groovy
 author: Bud Byrd
 coverPhoto: ./cover.jpg

@@ -7,6 +7,7 @@ author: Bud Byrd
 description: |
   Lately, I’ve been hard at work refactoring the http-requests library in an effort to simplify the codebase and limit its scope in order to make it more maintainable. I also wanted to broaden the audience that might be able to take advantage of the library and its approach. After a critical review of the state of the library, I’ve completed version 2.0 of the library.
 coverPhoto: ./cover.jpg
+coverAttribution: Photo by Nicolas Picard on Unsplash
 ---
 
 Lately, I've been hard at work refactoring the `http-requests` library in an effort to simplify the codebase and limit its scope in order to make it more maintainable. I also wanted to broaden the audience that might be able to take advantage of the library and its approach. After a critical review of the state of the library, I've completed version 2.0 of the library.
