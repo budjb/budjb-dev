@@ -39,11 +39,16 @@ const Layout = ({ children }) => {
       <div className="d-block d-lg-flex flex-row">
         <header className="main-header text-center">
           <Navbar variant="light" expand="lg" className="flex-row flex-lg-column">
-            <Navbar.Brand className="mr-lg-0"><Link to="/">budjb.dev</Link></Navbar.Brand>
-            <Navbar.Toggle/>
+            <Navbar.Brand className="mr-lg-0">
+              <Link to="/">budjb.dev</Link>
+            </Navbar.Brand>
+            <Navbar.Toggle />
             <Navbar.Collapse className="flex-column">
               <div className="d-block pt-3">
-                <Image fixed={data.avatar.childImageSharp.fixed} className="profile-image mb-3 rounded-circle mx-auto"/>
+                <Image
+                  fixed={data.avatar.childImageSharp.fixed}
+                  className="profile-image mb-3 rounded-circle mx-auto"
+                />
 
                 <div className="bio mb-3 text-justify">
                   Hi, my name is Bud Byrd. I write software on clouds that runs clouds. I really enjoy learning new

@@ -1,6 +1,19 @@
 .blog-list {
+
+@include media-breakpoint-up(lg) {
   .item {
+    border-radius: 0.25rem;
+
+    .cover-photo {
+      border-top-left-radius: calc(0.25rem - 1px);
+      border-top-right-radius: calc(0.25rem - 1px);
+    }
+  }
+}
+
+.item {
     margin-bottom: 3rem;
+    border-radius: 0;
 
     .cover-photo {
       max-height: 250px;

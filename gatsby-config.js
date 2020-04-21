@@ -18,8 +18,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
-        shortname: `budjb-dev`
-      }
+        shortname: `budjb-dev`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -54,8 +54,8 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              noInlineHighlight: true
-            }
+              noInlineHighlight: true,
+            },
           },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
@@ -93,9 +93,9 @@ module.exports = {
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }],
-                })
-              })
+                  custom_elements: [{ 'content:encoded': edge.node.html }],
+                });
+              });
             },
             query: `
               {
@@ -116,11 +116,11 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.xml",
-            title: "budjb.dev",
+            output: '/rss.xml',
+            title: 'budjb.dev',
           },
-        ]
-      }
+        ],
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,

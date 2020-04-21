@@ -6,7 +6,7 @@ import SEO from '../components/seo';
 import { Disqus } from 'gatsby-plugin-disqus';
 import { Figure } from 'react-bootstrap';
 
-const CoverPhoto = ({post}) => {
+const CoverPhoto = ({ post }) => {
   if (!post.frontmatter.coverPhoto) {
     return '';
   }
@@ -15,7 +15,7 @@ const CoverPhoto = ({post}) => {
 
   if (post.frontmatter.coverAttribution) {
     attribution = (
-      <Figure.Caption className="px-3" style={{fontSize: '.75rem'}}>
+      <Figure.Caption className="px-3" style={{ fontSize: '.75rem' }}>
         {post.frontmatter.coverAttribution}
       </Figure.Caption>
     );
@@ -23,10 +23,10 @@ const CoverPhoto = ({post}) => {
 
   return (
     <Figure className="d-block bg-white mb-0">
-      <Image fluid={post.frontmatter.coverPhoto.childImageSharp.fluid} alt=""/>
+      <Image fluid={post.frontmatter.coverPhoto.childImageSharp.fluid} alt="" />
       {attribution}
     </Figure>
-  )
+  );
 };
 
 const BlogPostTemplate = ({ data, location }) => {
@@ -38,13 +38,13 @@ const BlogPostTemplate = ({ data, location }) => {
     url: siteUrl + location.pathname,
     identifier: post.id,
     title: post.frontmatter.title,
-  }
-  
+  };
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
       <div className="limited-content-width py-5 px-0 px-md-4">
-        <CoverPhoto post={post}/>
+        <CoverPhoto post={post} />
         <article className="blog-post px-3 py-3">
           <header className="blog-post-header">
             <h1 className="mb-2">{post.frontmatter.title}</h1>
@@ -55,7 +55,7 @@ const BlogPostTemplate = ({ data, location }) => {
             </div>
           </header>
           <div className="blog-post-body" dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr className="my-5"/>
+          <hr className="my-5" />
           <Disqus config={disqusConfig} />
         </article>
       </div>

@@ -7,6 +7,7 @@ author: Bud Byrd
 coverPhoto: ./cover.jpg
 slug: jax-rs-and-hashmaps
 ---
+
 I started working with the Grails framework recently when I started working for my new company. We were writing an application that provided a RESTful service, and my team had opted to use JAX-RS to implement that service.
 
 One of the frustrations I had while learning Grails had to do with some of the convenience Groovy provides. In particular, I ran into an issue where JAX-RS did not know how to handle maps, yet it handled lists (even with nested maps!) just fine.  That's certainly a workaround if I had to return a map, but it does not make sense to have an API call return a list of a map when only a single map makes sense.
@@ -35,11 +36,11 @@ A message body writer is a component of JAX-RS that helps convert some input obj
 
 The grails plugin makes it easy to register a new provider.  The [documentation](http://code.google.com/p/grails-jaxrs/wiki/AdvancedFeatures#Custom_providersI) sets certain requirements for a new provider to magically work:
 
-* must be annotated with `@javax.ws.rs.ext.Provider`
-* must have a file name matching `*Reader.groovy` if the corresponding class implements `javax.ws.rs.ext.MessageBodyReader`
-* must have a file name matching `*Writer.groovy` if the corresponding class implements `javax.ws.rs.ext.MessageBodyWriter`
+- must be annotated with `@javax.ws.rs.ext.Provider`
+- must have a file name matching `*Reader.groovy` if the corresponding class implements `javax.ws.rs.ext.MessageBodyReader`
+- must have a file name matching `*Writer.groovy` if the corresponding class implements `javax.ws.rs.ext.MessageBodyWriter`
 
-Also the file must be placed in a specific folder within your grails project: **grails-app/providers** (note that you will also need the directory structure defined by your package name, so **grails-app/providers/com/budjb/util/jaxrs** in my example).  Simply drop the following code into **HashMapWriter.groovy** in that directory and the above call works as expected.
+Also the file must be placed in a specific folder within your grails project: **grails-app/providers** (note that you will also need the directory structure defined by your package name, so **grails-app/providers/com/budjb/util/jaxrs** in my example). Simply drop the following code into **HashMapWriter.groovy** in that directory and the above call works as expected.
 
 ```groovy
 /**

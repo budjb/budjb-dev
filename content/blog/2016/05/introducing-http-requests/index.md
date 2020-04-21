@@ -10,9 +10,9 @@ coverAttribution: Photo by Patrik Göthe on Unsplash
 
 I've recently put a lot of work into a new library I've named **http-requests**. I had previously written a project called **jersey-request-builder**, which is an HTTP client wrapper written on top of **Jersey Client 1.x** and implemented as a Grails plugin. Lately, I've been busy porting a bunch of Grails plugins from 2.x to 3.x, and I decided I wasn't very happy with how I had implemented the **jersey-request-builder** plugin and didn't want to put the effort into migrating it. In particular, I wanted to improve the following points.
 
-* The request builder code structure was fairly tightly coupled with Grails, and required some changes to make it work outside of that context.
-* It was even more tightly coupled with Spring Framework, and would not function as a standalone library.
-* Most of all, it was tightly coupled with **Jersey Client**, and other libraries could not be plugged in as the backend to the wrapper.
+- The request builder code structure was fairly tightly coupled with Grails, and required some changes to make it work outside of that context.
+- It was even more tightly coupled with Spring Framework, and would not function as a standalone library.
+- Most of all, it was tightly coupled with **Jersey Client**, and other libraries could not be plugged in as the backend to the wrapper.
 
 Those problems were my primary focus when I sat down and wrote the **http-requests** library. Now, the library is a set of standalone groovy JARs with no Grails or Spring Framework dependencies. It was written with modularity in mind, as **Jersey Client 1.x**, **Jersey Client 2.x**, and **Apache HttpComponents Client** are all supported as backends.
 
