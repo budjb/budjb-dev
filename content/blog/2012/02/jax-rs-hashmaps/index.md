@@ -6,6 +6,9 @@ topic: groovy
 author: Bud Byrd
 coverPhoto: ./cover.jpg
 slug: jax-rs-and-hashmaps
+tags:
+  - groovy
+  - jax-rs
 ---
 
 I started working with the Grails framework recently when I started working for my new company. We were writing an application that provided a RESTful service, and my team had opted to use JAX-RS to implement that service.

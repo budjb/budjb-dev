@@ -1,0 +1,68 @@
+.blog-list {
+
+.entry {
+    margin-bottom: 3rem;
+    border-radius: 0;
+    border: 0;
+
+    .cover-photo {
+      max-height: 250px;
+    }
+
+    .tags {
+      margin: .75rem 0 0;
+
+      a {
+        display: inline-block;
+        padding: .5em .75em;
+        background: $gray-100;
+        border: 1px solid $gray-300;
+        font-size: .75rem;
+        text-transform: uppercase;
+
+        &:not(:last-of-type) {
+          margin-right: 1em;
+        }
+      }
+    }
+    .meta {
+      span {
+        font-size: .75rem;
+        color: $gray-600;
+        text-transform: uppercase;
+
+        &:not(:last-of-type):after {
+          content: "";
+          display: inline-block;
+          width: 3px;
+          height: 3px;
+          border-radius: 50%;
+          background: #8f8f8f;
+          margin-left: 0.5rem;
+          margin-right: 0.5rem;
+          position: relative;
+          top: -3px;
+        }
+      }
+    }
+  }
+
+  .pagination {
+    font-size: .875em;
+    text-transform: uppercase;
+  }
+}
+
+// Turn off rounded corners when the view portal shrinks the blog index
+@media(min-width: 820px) {
+  .blog-list {
+    .entry {
+      border-radius: 0.25rem;
+
+      .cover-photo {
+        border-top-left-radius: calc(0.25rem - 1px);
+        border-top-right-radius: calc(0.25rem - 1px);
+      }
+    }
+  }
+}

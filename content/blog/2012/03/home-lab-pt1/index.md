@@ -5,6 +5,8 @@ readtime: 5 min
 author: Bud Byrd
 coverPhoto: ./jordan-harrison-40XgDxBfYXM-unsplash.jpg
 coverAttribution: Photo by Jordan Harrison on Unsplash
+tags:
+  - vmware
 ---
 
 I've recently had aspirations to study and take the VCP 5 exam, and while reading material and doing sample tests is helpful, there's nothing like having your own lab environment to play around and tinker with. I didn't want to dump a whole lot of money into a powerful server with network storage, however.

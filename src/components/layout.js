@@ -10,7 +10,7 @@ import { Link } from 'gatsby';
 
 import '../scss/main.scss';
 
-import ExternalLink from './ExternalLink';
+import ExternalLink from './external-link';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -77,19 +77,19 @@ const Layout = ({ children }) => {
 
               <Nav className="d-inline-block text-left my-0 mx-auto" activeKey="/">
                 <Nav.Item>
-                  <Nav.Link as={Link} href="/">
+                  <Nav.Link as={Link} href="/" to="/">
                     <FontAwesomeIcon icon={faHome} className="mr-2" fixedWidth />
                     Home
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link as={Link} href="#">
+                  <Nav.Link as={Link} to="/">
                     <FontAwesomeIcon icon={faUser} className="mr-2" fixedWidth />
                     About Me
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link as={Link} href="#">
+                  <Nav.Link as={Link} to="/">
                     <FontAwesomeIcon icon={faScroll} className="mr-2" fixedWidth />
                     Resume
                   </Nav.Link>
@@ -100,9 +100,9 @@ const Layout = ({ children }) => {
         </header>
         <main className="mvh-100 flex-grow-1 position-relative flex-column justify-content-center">{children}</main>
       </div>
-      <footer class="text-center py-3 bg-dark text-gray-500">
+      <footer className="text-center py-3 bg-dark text-gray-500">
         <p className="mb-0">
-          <small class="copyright">Copyright &copy; 2020 Bud Byrd.</small>
+          <small className="copyright">Copyright &copy; 2020 Bud Byrd.</small>
         </p>
       </footer>
     </>
