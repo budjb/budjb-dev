@@ -23,7 +23,7 @@ const BlogIndex = ({ data, location, pageContext }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="Home" />
       <header className="bg-light">
-        <h1 className="limited-content-width py-3 py-lg-5 px-2 px-lg-4">Posts Tagged With "{tagName}"</h1>
+        <h1 className="py-3 py-lg-5 px-2 px-lg-4 text-center text-gray-300 text-uppercase">{tagName}</h1>
       </header>
 
       <section class=" blog-list limited-content-width py-3 py-lg-5 px-lg-3">
