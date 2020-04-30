@@ -21,12 +21,12 @@ const BlogIndex = ({ data, location, pageContext }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Home" />
-      <section className=" blog-list limited-content-width py-3 py-lg-5 px-lg-3">
+      <section className=" blog-list limited-content-width py-3 px-lg-3">
         {posts.map(({ node }, i) => (
           <BlogIndexEntry key={i} post={node} />
         ))}
 
-        <div className="pagination d-flex flex-row justify-content-between">
+        <div className="pagination d-flex flex-row justify-content-between px-2 px-lg-0">
           <div className="text-left" style={{ flex: '1 1 0' }}>
             {!isFirst && (
               <Link to={prevPage} rel="prev">

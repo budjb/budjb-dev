@@ -43,7 +43,7 @@ const BlogPostTemplate = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
-      <div className="limited-content-width py-5 px-0 px-md-4">
+      <div className="limited-content-width py-3 px-0 px-lg-3">
         <CoverPhoto post={post} />
         <article className="blog-post px-3 py-3">
           <header className="blog-post-header">
