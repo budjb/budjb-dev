@@ -129,15 +129,14 @@ module.exports = {
         short_name: `budjb.dev`,
         start_url: `/`,
         background_color: `#ffffff`,
+        theme_color: '#ffffff',
         display: `minimal-ui`,
-        // icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/logo.svg`,
       },
     },
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-react-helmet`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
     `gatsby-plugin-sitemap`,
   ],
 };

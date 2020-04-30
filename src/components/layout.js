@@ -15,6 +15,9 @@ import ExternalLink from './external-link';
 const Header = () => {
   const data = useStaticQuery(graphql`
     query LayoutQuery {
+      logo: file(absolutePath: { regex: "/logo.svg/" }) {
+        publicURL
+      }
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
           fixed(width: 160) {
@@ -38,7 +41,9 @@ const Header = () => {
     <header className="main-header text-center">
       <Navbar variant="light" expand="lg" className="d-flex flex-row flex-lg-column">
         <Navbar.Brand className="mr-lg-0">
-          <Link to="/">budjb.dev</Link>
+          <Link to="/">
+            <img src={data.logo.publicURL} className="header-logo" alt="budjb.dev"/>
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="flex-column">
