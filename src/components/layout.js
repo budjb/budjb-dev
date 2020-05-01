@@ -42,20 +42,17 @@ const Header = () => {
       <Navbar variant="light" expand="lg" className="d-flex flex-row flex-lg-column">
         <Navbar.Brand className="mr-lg-0">
           <Link to="/">
-            <img src={data.logo.publicURL} className="header-logo" alt="budjb.dev"/>
+            <img src={data.logo.publicURL} className="header-logo" alt="budjb.dev" />
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="flex-column">
           <div className="d-block pt-3">
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              className="profile-image mb-3 rounded-circle mx-auto"
-            />
+            <Image fixed={data.avatar.childImageSharp.fixed} className="profile-image mb-3 rounded-circle mx-auto" />
 
             <div className="bio mb-3 text-justify">
-              Hi, my name is Bud Byrd. I write software on clouds that runs clouds. I really enjoy learning new
-              things, taking pictures, and making great Texas BBQ.
+              Hi, my name is Bud Byrd. I write software on clouds that runs clouds. I really enjoy learning new things,
+              taking pictures, and making great Texas BBQ.
             </div>
 
             <ul className="social-list list-inline py-3 mx-auto">
@@ -95,7 +92,7 @@ const Header = () => {
         </Navbar.Collapse>
       </Navbar>
     </header>
-  )
+  );
 };
 
 const Footer = () => {
@@ -112,10 +109,10 @@ const Layout = ({ children }) => {
   return (
     <>
       <div className="d-block d-lg-flex flex-row">
-        <Header/>
+        <Header />
         <main className="mvh-100 d-block flex-grow-1 mt-lg-0 position-relative">{children}</main>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
