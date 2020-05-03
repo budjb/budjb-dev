@@ -8,7 +8,7 @@ import { FacebookShareButton, TwitterShareButton, EmailShareButton } from 'react
 import './share-modal.scss';
 
 export const ShareModal = ({ show, close, url, title }) => {
-  if (navigator.share) {
+  if (navigator && navigator.share) {
     if (show) {
       navigator
         .share({
