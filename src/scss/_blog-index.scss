@@ -1,6 +1,5 @@
 .blog-list {
-
-.entry {
+  .entry {
     margin-bottom: 3rem;
     border-radius: 0;
     border: 0;
@@ -9,22 +8,6 @@
       max-height: 250px;
     }
 
-    .tags {
-      margin: .75rem 0 0;
-
-      a {
-        display: inline-block;
-        padding: .5em .75em;
-        background: $gray-100;
-        border: 1px solid $gray-300;
-        font-size: .75rem;
-        text-transform: uppercase;
-
-        &:not(:last-of-type) {
-          margin-right: 1em;
-        }
-      }
-    }
     .meta {
       span {
         font-size: .75rem;

@@ -1,10 +1,13 @@
-import React from 'react';
-import { graphql } from 'gatsby';
+import React, { useState } from 'react';
+import { graphql, Link } from 'gatsby';
 import Image from 'gatsby-image';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import { Disqus } from 'gatsby-plugin-disqus';
 import { Figure } from 'react-bootstrap';
+import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ShareModal } from '../components/share-modal';
+import _ from 'lodash';
 
 const CoverPhoto = ({ post }) => {
   if (!post.frontmatter.coverPhoto) {
@@ -30,33 +33,42 @@ const CoverPhoto = ({ post }) => {
 };
 
 const BlogPostTemplate = ({ data, location }) => {
+  const [showShareModal, setShowShareModal] = useState(false);
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
-  const siteUrl = data.site.siteMetadata.siteUrl;
-
-  const disqusConfig = {
-    url: siteUrl + location.pathname,
-    identifier: post.id,
-    title: post.frontmatter.title,
-  };
 
   return (
     <Layout location={location} title={siteTitle}>
+      <ShareModal url={window.location.href} show={showShareModal} close={() => setShowShareModal(false)} />
       <SEO title={post.frontmatter.title} description={post.excerpt} />
       <div className="limited-content-width py-3 px-0 px-lg-3">
         <CoverPhoto post={post} />
         <article className="blog-post px-3 py-3">
           <header className="blog-post-header">
             <h1 className="mb-2">{post.frontmatter.title}</h1>
-            <div className="meta mb-3">
-              <span className="meta-item">Published {post.frontmatter.date}</span>
-              <span className="meta-item">{post.frontmatter.author}</span>
-              <span className="meta-item">{post.frontmatter.readtime} read</span>
+            <div className="d-flex flex-row align-items-center mb-3">
+              <div className="flex-grow-1 meta">
+                <span className="meta-item">{post.frontmatter.date}</span>
+                <span className="meta-item">{post.frontmatter.author}</span>
+                <span className="meta-item">{post.frontmatter.readtime} read</span>
+              </div>
+              <button className="clear-style px-2 text-muted-hover" onClick={() => setShowShareModal(true)}>
+                <FontAwesomeIcon icon={faShareAlt} />
+              </button>
             </div>
           </header>
           <div className="blog-post-body" dangerouslySetInnerHTML={{ __html: post.html }} />
-          <hr className="my-5" />
-          <Disqus config={disqusConfig} />
+          <footer className="d-flex flex-row align-items-center">
+            <div className="blog-tags flex-grow-1">
+              {(post.frontmatter.tags || []).map((it, i) => {
+                return (
+                  <Link key={i} to={`/tags/${_.kebabCase(it)}`}>
+                    {it}
+                  </Link>
+                );
+              })}
+            </div>
+          </footer>
         </article>
       </div>
     </Layout>
@@ -89,6 +101,7 @@ export const pageQuery = graphql`
             }
           }
         }
+        tags
         coverAttribution
       }
     }

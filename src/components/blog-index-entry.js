@@ -43,7 +43,7 @@ export default ({ post }) => {
         </Link>
 
         {post.frontmatter.tags && (
-          <div className="tags">
+          <div className="blog-tags">
             {post.frontmatter.tags.map((it, i) => {
               return (
                 <Link key={i} to={`/tags/${_.kebabCase(it)}`}>
