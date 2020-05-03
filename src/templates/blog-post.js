@@ -37,9 +37,11 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
 
+  const articleUrl = `${data.site.siteMetadata.siteUrl}${location.pathname}`;
+
   return (
     <Layout location={location} title={siteTitle}>
-      <ShareModal url={window.location.href} show={showShareModal} close={() => setShowShareModal(false)} />
+      <ShareModal url={articleUrl} show={showShareModal} close={() => setShowShareModal(false)} />
       <SEO title={post.frontmatter.title} description={post.excerpt} />
       <div className="limited-content-width py-3 px-0 px-lg-3">
         <CoverPhoto post={post} />
