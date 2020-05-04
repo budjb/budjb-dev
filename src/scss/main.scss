@@ -1,15 +1,14 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap');
 
 $headings-font-family: 'Oswald', sans-serif;
 
-$link-color:                              #6c757d !default;
-$link-decoration:                         none !default;
-$link-hover-color:                        darken($link-color, 15%) !default;
-$link-hover-decoration:                   none !default;
+$link-color: #6c757d !default;
+$link-decoration: none !default;
+$link-hover-color: darken($link-color, 15%) !default;
+$link-hover-decoration: none !default;
 
-@import "bootstrap/bootstrap.scss";
-@import "layout";
-@import "blog-index";
-@import "blog-post";
-@import "blog-common";
+@import 'bootstrap/bootstrap.scss';
+@import 'layout';
+@import 'blog-index';
+@import 'blog-post';
+@import 'blog-common';

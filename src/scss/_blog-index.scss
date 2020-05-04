@@ -10,12 +10,12 @@
 
     .meta {
       span {
-        font-size: .75rem;
+        font-size: 0.75rem;
         color: $gray-600;
         text-transform: uppercase;
 
         &:not(:last-of-type):after {
-          content: "";
+          content: '';
           display: inline-block;
           width: 3px;
           height: 3px;
@@ -31,13 +31,13 @@
   }
 
   .pagination {
-    font-size: .875em;
+    font-size: 0.875em;
     text-transform: uppercase;
   }
 }
 
 // Turn off rounded corners when the view portal shrinks the blog index
-@media(min-width: 820px) {
+@media (min-width: 820px) {
   .blog-list {
     .entry {
       border-radius: 0.25rem;

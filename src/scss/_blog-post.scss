@@ -3,12 +3,12 @@ article.blog-post {
 
   .meta {
     span {
-      font-size: .75rem;
+      font-size: 0.75rem;
       color: $gray-600;
       text-transform: uppercase;
 
       &:not(:last-of-type):after {
-        content: "";
+        content: '';
         display: inline-block;
         width: 3px;
         height: 3px;

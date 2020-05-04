@@ -60,8 +60,8 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md,css}\"",
-    "format-check": "prettier --check \"**/*.{js,jsx,json,md,css}\"",
+    "format": "prettier --write \"**/*.{js,jsx,json,md,css,scss}\"",
+    "format-check": "prettier --check \"**/*.{js,jsx,json,md,css,scss}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
