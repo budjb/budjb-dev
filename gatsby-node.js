@@ -83,7 +83,7 @@ exports.createPages = async ({ graphql, actions }) => {
       const kebabTagName = _.kebabCase(tagName);
 
       createPage({
-        path: i === 0 ? `/tags/${kebabTagName}` : `/tags/${kebabTagName}/${i + 1}`,
+        path: i === 0 ? `/tags/${kebabTagName}` : `/tags/${kebabTagName}/page/${i + 1}`,
         component: taggedBlogIndexTemplate,
         context: {
           limit: postsPerPage,

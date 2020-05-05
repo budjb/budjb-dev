@@ -1,8 +1,11 @@
 .blog-list {
   .entry {
-    margin-bottom: 3rem;
     border-radius: 0;
     border: 0;
+
+    &:not(:last-of-type) {
+      margin-bottom: 3rem;
+    }
 
     .cover-photo {
       max-height: 250px;
