@@ -124,7 +124,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: '#ffffff',
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `content/assets/logo.svg`,
       },
     },
