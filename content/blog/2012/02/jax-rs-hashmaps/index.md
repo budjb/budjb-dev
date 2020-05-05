@@ -8,6 +8,7 @@ coverPhoto: ./cover.jpg
 slug: jax-rs-and-hashmaps
 tags:
   - groovy
+  - grails
   - jax-rs
 ---
 

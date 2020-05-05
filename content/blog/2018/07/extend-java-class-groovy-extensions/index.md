@@ -8,6 +8,8 @@ description: |
   I've been working on an update to the http-requests library, and wanted to remove the Groovy dependency to make it more portable. I like a lot of the conveniences Groovy affords the library, as well as some of the entity converters that use Groovy classes, so I wanted to find a way to still provide those features even after ripping Groovy-specific methods out of the main interfaces.
 coverPhoto: ./cover.jpg
 coverAttribution: Photo by Hunter Haley on Unsplash
+tags:
+  - groovy
 ---
 
 I've been working on an update to the [http-requests](https://github.com/budjb/http-requests) library, and wanted to remove the Groovy dependency to make it more portable. I like a lot of the conveniences Groovy affords the library, as well as some of the entity converters that use Groovy classes, so I wanted to find a way to still provide those features even after ripping Groovy-specific methods out of the main interfaces.

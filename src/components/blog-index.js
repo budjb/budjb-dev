@@ -3,7 +3,7 @@ import BlogIndexEntry from '../components/blog-index-entry';
 
 const BlogIndex = ({ posts, className }) => {
   return (
-    <section class={`blog-list ${className || ''}`}>
+    <section className={`blog-list ${className || ''}`}>
       {posts.map(({ node }, i) => (
         <BlogIndexEntry key={i} post={node} />
       ))}

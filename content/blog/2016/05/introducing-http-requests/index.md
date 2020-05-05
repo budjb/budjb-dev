@@ -6,6 +6,10 @@ topic: groovy
 author: Bud Byrd
 coverPhoto: ./cover.jpg
 coverAttribution: Photo by Patrik Göthe on Unsplash
+tags:
+  - groovy
+  - http
+  - spring-boot
 ---
 
 I've recently put a lot of work into a new library I've named **http-requests**. I had previously written a project called **jersey-request-builder**, which is an HTTP client wrapper written on top of **Jersey Client 1.x** and implemented as a Grails plugin. Lately, I've been busy porting a bunch of Grails plugins from 2.x to 3.x, and I decided I wasn't very happy with how I had implemented the **jersey-request-builder** plugin and didn't want to put the effort into migrating it. In particular, I wanted to improve the following points.

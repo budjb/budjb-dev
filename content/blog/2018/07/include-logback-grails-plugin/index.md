@@ -6,7 +6,9 @@ topic: groovy
 author: Bud Byrd
 description: |
   By default, Grails excludes the logback.groovy file (among others) when plugins are assembled into JAR files, and for good reason. A plugin should not include the logger configuration, since the plugin would unexpectedly influence the configuration of the applications that include it.
-coverIconPreset: lightbulb
+tags:
+  - groovy
+  - grails
 ---
 
 By default, Grails excludes the `logback.groovy` file (among others) when plugins are assembled into JAR files, and for good reason. A plugin should not include the logger configuration, since the plugin would unexpectedly influence the configuration of the applications that include it.
