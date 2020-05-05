@@ -1,0 +1,29 @@
+.projects {
+  section {
+    background: white;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+
+  section:not(:last-of-type) {
+    margin-bottom: 3em;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .projects {
+    section {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border-radius: 0.25rem;
+
+      figure {
+        border-radius: 0.25rem;
+      }
+    }
+
+    section:nth-child(2) {
+      flex-direction: row-reverse;
+    }
+  }
+}

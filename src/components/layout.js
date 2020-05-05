@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faHome, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUser, faTools } from '@fortawesome/free-solid-svg-icons';
 import { Navbar, Nav } from 'react-bootstrap';
 import Image from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
@@ -75,11 +75,17 @@ const Header = () => {
             <hr />
           </div>
 
-          <Nav className="d-inline-block text-left my-0 mx-auto" activeKey="/">
+          <Nav className="d-inline-block text-left my-0 mx-auto">
             <Nav.Item>
-              <Nav.Link as={Link} href="/" to="/">
+              <Nav.Link as={Link} to="/">
                 <FontAwesomeIcon icon={faHome} className="mr-2" fixedWidth />
                 Home
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link as={Link} to="/projects">
+                <FontAwesomeIcon icon={faTools} className="mr-2" fixedWidth />
+                Projects
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>

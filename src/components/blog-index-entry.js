@@ -24,7 +24,7 @@ export default ({ post }) => {
   const innerHtml = post.frontmatter.description || post.excerpt;
 
   return (
-    <Card className="entry">
+    <Card className="entry shadow">
       <BlogImage post={post} />
       <Card.Body>
         <Card.Title as="h2">
