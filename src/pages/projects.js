@@ -5,10 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faBus, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import ExternalLink from '../components/external-link';
 
-const Project = ({ children, icon }) => {
+const Project = ({ children, icon, name }) => {
   return (
     <section>
-      <figure className="d-flex align-items-center justify-content-center display-1 m-lg-3 p-5 bg-dark text-white">
+      <figure
+        className={`d-flex align-items-center justify-content-center display-1 m-lg-3 p-5 text-white ${name || ''}`}
+      >
         <FontAwesomeIcon icon={icon} />
       </figure>
       <div className="flex-grow-1 p-3">{children}</div>
@@ -21,7 +23,7 @@ export default () => {
     <Layout>
       <SEO title="Projects" description="My personal projects." />
       <div className="projects limited-content-width my-3 mx-auto py-3 px-lg-3">
-        <Project icon={faList}>
+        <Project icon={faList} name="wishlist">
           <h1>
             <ExternalLink href="https://wishlist.budjb.com">Wishlist</ExternalLink>
           </h1>
@@ -38,7 +40,7 @@ export default () => {
           </p>
         </Project>
 
-        <Project icon={faGlobe}>
+        <Project icon={faGlobe} name="http-requests">
           <h1>
             <ExternalLink href="https://github.com/budjb/http-requests">HTTP Requests</ExternalLink>
           </h1>
@@ -54,7 +56,7 @@ export default () => {
           </p>
         </Project>
 
-        <Project icon={faBus}>
+        <Project icon={faBus} name="rabbitmq-native">
           <h1>
             <ExternalLink href="https://github.com/budjb/grails-rabbitmq-native">
               RabbitMQ Native for Grails

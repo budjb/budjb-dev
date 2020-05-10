@@ -44,8 +44,9 @@
     "typeface-montserrat": "0.0.75"
   },
   "devDependencies": {
-    "pre-git": "^3.17.1",
-    "prettier": "2.0.4"
+    "husky": "^4.2.5",
+    "prettier": "2.0.4",
+    "pretty-quick": "^2.0.1"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
@@ -71,11 +72,9 @@
   "release": {
     "analyzeCommits": "simple-commit-message"
   },
-  "config": {
-    "pre-git": {
-      "pre-commit": [
-        "yarn format-check"
-      ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
     }
   }
 }

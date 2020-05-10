@@ -2,6 +2,20 @@
   section {
     background: white;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+    figure {
+      &.wishlist {
+        background: #a9001a;
+      }
+
+      &.http-requests {
+        background: #1c80c3;
+      }
+
+      &.rabbitmq-native {
+        background: #ff6601;
+      }
+    }
   }
 
   section:not(:last-of-type) {
