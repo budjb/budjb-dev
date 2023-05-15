@@ -3,10 +3,10 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import BlogIndex from '../components/blog-index';
 import Pagination from '../components/pagination';
-import SEO from '../components/seo';
+import DocumentHead from '../components/document-head';
 import _ from 'lodash';
 
-export default ({ data, location, pageContext }) => {
+const TaggedBlogIndex = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
 
@@ -14,7 +14,7 @@ export default ({ data, location, pageContext }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title={tagName} />
+      <DocumentHead title={tagName} />
       <header className="bg-dark">
         <h1 className="py-3 py-lg-5 px-2 px-lg-4 text-center text-gray-300 text-uppercase">{tagName}</h1>
       </header>
@@ -37,7 +37,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
       limit: $limit
       skip: $skip
       filter: { frontmatter: { tags: { in: [$tag] } } }
@@ -58,9 +58,7 @@ export const pageQuery = graphql`
             tags
             coverPhoto {
               childImageSharp {
-                fluid(maxWidth: 820, maxHeight: 300) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(width: 820, height: 300, layout: CONSTRAINED)
               }
             }
           }
@@ -69,3 +67,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default TaggedBlogIndex;

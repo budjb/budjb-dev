@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faHome, faUser, faTools } from '@fortawesome/free-solid-svg-icons';
 import { Navbar, Nav } from 'react-bootstrap';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import { Link } from 'gatsby';
@@ -20,9 +20,7 @@ const Header = () => {
       }
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 160) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(width: 160, layout: FIXED)
         }
       }
       site {
@@ -48,7 +46,10 @@ const Header = () => {
         <Navbar.Toggle />
         <Navbar.Collapse className="flex-column">
           <div className="d-block pt-3">
-            <Image fixed={data.avatar.childImageSharp.fixed} className="profile-image mb-3 rounded-circle mx-auto" />
+            <GatsbyImage
+              image={data.avatar.childImageSharp.gatsbyImageData}
+              className="profile-image mb-3 rounded-circle mx-auto"
+            />
 
             <div className="bio mb-3 text-justify">
               Hi, my name is Bud Byrd. I write software on clouds that runs clouds. I really enjoy learning new things,
