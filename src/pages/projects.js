@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/layout';
-import SEO from '../components/seo';
+import DocumentHead from '../components/document-head';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faBus, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import ExternalLink from '../components/external-link';
@@ -18,10 +18,10 @@ const Project = ({ children, icon, name }) => {
   );
 };
 
-export default () => {
+const Page = () => {
   return (
     <Layout>
-      <SEO title="Projects" description="My personal projects." />
+      <DocumentHead title="Projects" description="My personal projects." />
       <div className="projects limited-content-width my-3 mx-auto py-3 px-lg-3">
         <Project icon={faList} name="wishlist">
           <h1>
@@ -77,3 +77,5 @@ export default () => {
     </Layout>
   );
 };
+
+export default Page;

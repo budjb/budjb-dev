@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { graphql, Link } from 'gatsby';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Layout from '../components/layout';
-import SEO from '../components/seo';
+import DocumentHead from '../components/document-head';
 import { Figure } from 'react-bootstrap';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -26,13 +26,13 @@ const CoverPhoto = ({ post }) => {
 
   return (
     <Figure className="d-block bg-white mb-0">
-      <Image fluid={post.frontmatter.coverPhoto.childImageSharp.fluid} alt="" />
+      <GatsbyImage image={post.frontmatter.coverPhoto.childImageSharp.gatsbyImageData} alt="" />
       {attribution}
     </Figure>
   );
 };
 
-const BlogPostTemplate = ({ data, location }) => {
+const Template = ({ data, location }) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
@@ -42,7 +42,7 @@ const BlogPostTemplate = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <ShareModal url={articleUrl} show={showShareModal} close={() => setShowShareModal(false)} />
-      <SEO title={post.frontmatter.title} description={post.excerpt} />
+      <DocumentHead title={post.frontmatter.title} description={post.excerpt} />
       <div className="limited-content-width py-3 px-0 px-lg-3">
         <CoverPhoto post={post} />
         <article className="blog-post px-3 py-3">
@@ -77,7 +77,7 @@ const BlogPostTemplate = ({ data, location }) => {
   );
 };
 
-export default BlogPostTemplate;
+export default Template;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -98,9 +98,7 @@ export const pageQuery = graphql`
         author
         coverPhoto {
           childImageSharp {
-            fluid(maxWidth: 820) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 820, layout: CONSTRAINED)
           }
         }
         tags

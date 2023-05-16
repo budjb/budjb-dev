@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { Card } from 'react-bootstrap';
 import _ from 'lodash';
 
@@ -8,7 +8,7 @@ const BlogImage = ({ post }) => {
   const image = post.frontmatter.coverPhoto;
 
   if (image) {
-    const as = () => <Image fluid={image.childImageSharp.fluid} className="cover-photo" alt="" />;
+    const as = () => <GatsbyImage image={image.childImageSharp.gatsbyImageData} className="cover-photo" alt="" />;
     return (
       <Link to={post.fields.slug}>
         <Card.Img as={as} />
@@ -19,7 +19,7 @@ const BlogImage = ({ post }) => {
   return '';
 };
 
-export default ({ post }) => {
+const BlogEntry = ({ post }) => {
   const title = post.frontmatter.title || post.fields.slug;
   const innerHtml = post.frontmatter.description || post.excerpt;
 
@@ -57,3 +57,5 @@ export default ({ post }) => {
     </Card>
   );
 };
+
+export default BlogEntry;
