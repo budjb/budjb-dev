@@ -11,7 +11,6 @@ const Template = ({ data, location, pageContext }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <DocumentHead title="Home" />
       <BlogIndex posts={posts} className="limited-content-width pb-3 p-lg-3" />
       <Pagination
         currentPage={pageContext.currentPage}
@@ -21,6 +20,8 @@ const Template = ({ data, location, pageContext }) => {
     </Layout>
   );
 };
+
+export const Head = () => <DocumentHead title="Home" />;
 
 export default Template;
 

@@ -21,7 +21,6 @@ const Project = ({ children, icon, name }) => {
 const Page = () => {
   return (
     <Layout>
-      <DocumentHead title="Projects" description="My personal projects." />
       <div className="projects limited-content-width my-3 mx-auto py-3 px-lg-3">
         <Project icon={faList} name="wishlist">
           <h1>
@@ -77,5 +76,7 @@ const Page = () => {
     </Layout>
   );
 };
+
+export const Head = () => <DocumentHead title="Projects" description="My personal projects." />;
 
 export default Page;

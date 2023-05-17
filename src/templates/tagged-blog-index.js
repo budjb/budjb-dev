@@ -9,12 +9,10 @@ import _ from 'lodash';
 const TaggedBlogIndex = ({ data, location, pageContext }) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
-
   const tagName = pageContext.tag;
 
   return (
     <Layout location={location} title={siteTitle}>
-      <DocumentHead title={tagName} />
       <header className="bg-dark">
         <h1 className="py-3 py-lg-5 px-2 px-lg-4 text-center text-gray-300 text-uppercase">{tagName}</h1>
       </header>
@@ -28,6 +26,8 @@ const TaggedBlogIndex = ({ data, location, pageContext }) => {
     </Layout>
   );
 };
+
+export const Head = ({ pageContext }) => <DocumentHead title={pageContext.tag} />;
 
 export const pageQuery = graphql`
   query taggedBlogListQuery($skip: Int!, $limit: Int!, $tag: String!) {

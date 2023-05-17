@@ -6,11 +6,9 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-const DocumentHead = ({ description, lang, meta, title }) => {
+const DocumentHead = ({ description, lang = 'en', meta = [], title }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -27,64 +25,53 @@ const DocumentHead = ({ description, lang, meta, title }) => {
     `
   );
 
-  const metaDescription = description || site.siteMetadata.description;
+  const pageDescription = description || site.siteMetadata.description;
+  const pageTitle = title ? `${title} | ${site.siteMetadata.title}` : site.siteMetadata.title;
+  const pageMeta = [
+    {
+      name: `description`,
+      content: pageDescription,
+    },
+    {
+      property: `og:title`,
+      content: title,
+    },
+    {
+      property: `og:description`,
+      content: pageDescription,
+    },
+    {
+      property: `og:type`,
+      content: `website`,
+    },
+    {
+      name: `twitter:card`,
+      content: `summary`,
+    },
+    {
+      name: `twitter:creator`,
+      content: site.siteMetadata.social.twitter,
+    },
+    {
+      name: `twitter:title`,
+      content: title,
+    },
+    {
+      name: `twitter:description`,
+      content: pageDescription,
+    },
+    ...meta,
+  ];
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.social.twitter,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+    <>
+      <html lang={lang} />
+      <title>{pageTitle}</title>
+      {pageMeta.map(({ name, content }) => (
+        <meta name={name} content={content} />
+      ))}
+    </>
   );
-};
-
-DocumentHead.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-};
-
-DocumentHead.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
 };
 
 export default DocumentHead;
