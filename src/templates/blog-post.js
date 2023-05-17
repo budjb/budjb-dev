@@ -42,7 +42,6 @@ const Template = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <ShareModal url={articleUrl} show={showShareModal} close={() => setShowShareModal(false)} />
-      <DocumentHead title={post.frontmatter.title} description={post.excerpt} />
       <div className="limited-content-width py-3 px-0 px-lg-3">
         <CoverPhoto post={post} />
         <article className="blog-post px-3 py-3">
@@ -76,6 +75,10 @@ const Template = ({ data, location }) => {
     </Layout>
   );
 };
+
+export const Head = ({ data }) => (
+  <DocumentHead title={data.markdownRemark.frontmatter.title} description={data.markdownRemark.excerpt} />
+);
 
 export default Template;
 
